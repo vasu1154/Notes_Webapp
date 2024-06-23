@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<div id="updateForm">
+    <form method = "POST">
+        {% csrf_token %}
+        <label for="inputText4" class="form-label"><strong>Title:</strong></label>
+        <input type="text" id="inputText4" name="title" value="{{note.title}}" class="form-control" readonly>
+        <br>
+
+            <label for="exampleFormControlTextarea1" class="form-label"><strong>Notes:</strong></label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="notes" readonly>{{note.text}}</textarea>
+        
+            <br>
+            <br>
+            <a href="{% url 'update' note.id%}">
+            <input class="btn btn-primary" type="" style = "width: 100%" value = "Update"></a>
+            <br><br>
+            <a href="{% url 'index' %}">
+            <input class="btn btn-primary" type="" style = "width: 100%" value = "Back" ></a>
+            
+    </form>
+
+</div>
+{% endblock %}

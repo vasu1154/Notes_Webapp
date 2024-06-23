@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<div id="updateForm">
+    <form method = "POST">
+        {% csrf_token %}
+        <label for="inputText4" class="form-label"><strong style="color: rgb(254, 243, 243);">Title:</strong></label>
+        <input type="text" id="inputText4" value="{{note.title}}" name="title" class="form-control">
+        <br>
+
+            <label for="exampleFormControlTextarea1" class="form-label"><strong style="color: rgb(254, 243, 243);">Notes:</strong></label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"  name="notes">{{note.text}}</textarea>
+            <br>
+         
+
+            <input class="btn btn-primary" type="submit" style = "width: 100%" value = "Update">
+            <br>
+            <br>
+            <a href="{% url 'index' %}">
+                <input class="btn btn-primary" type="" style = "width: 100%" value = "Back" ></a>
+            <!-- <input class="btn btn-danger" type="submit" style = "width: 100%" value = "Delete">
+            <input class="btn btn-primary" type="" style = "width: 100%" value = "Cancel"> -->
+    </form>
+
+</div>
+{% endblock %}

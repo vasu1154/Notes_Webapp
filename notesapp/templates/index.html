@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<ol class="list-group">
+    {%for i in note%}
+    <a href="{% url 'note_dtl' i.id %}">
+    <li class="txt">
+
+        <div class="noteContainer">
+            <div id="headingAndIconsContainer">
+                <div class="">
+                    <h4><strong>{{i.title}}</strong></h4>
+                </div>
+                <div id="icons">
+                    <a href="{% url 'update' i.id %}">
+                        <span class="span"> <button class="btn btn-primary icons"><i
+                                    class="fas fa-pen"></i></button></i></span>
+                    </a>
+                    <a href="{% url 'delete' i.id %}">
+                        <span class="span"> <button class="btn btn-danger icons"><i
+                            class="fas fa-trash-alt"></i></button></i></span></a>
+                </div>
+
+            </div>
+
+            <div id="notes">
+                <p>{{i.text | truncatechars:"100"}}</p>
+            </div>
+            <p style="float: right; font-size: 12px"><strong>{{i.time }}</strong></p>
+        </div>
+    </li>
+    </a>
+    {% endfor %}
+</ol>
+
+{% endblock %}
